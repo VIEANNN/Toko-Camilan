@@ -18,7 +18,7 @@
                 <li><a href="{{ route('dashboard') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Dashboard</a></li>
                 <li><a href="{{ route('kategori-camilan.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Kategori Camilan</a></li>
                 <li><a href="{{ route('transaksi.index') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Transaksi</a></li>
-                <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Laporan</a></li>
+                <li><a href="{{ route('laporan.index')}}"class="block py-2 px-4 hover:bg-gray-700 rounded">Laporan</a></li>
                 <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Statistik</a></li>
                 <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Settings</a></li>
             </ul>

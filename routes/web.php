@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setup\KategoriCamilanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Transaksi\PenjualanController;
-use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\Transaksi\LaporanController;
 use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\SettingsController;
 

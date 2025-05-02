@@ -21,11 +21,11 @@ class PenjualanController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_pembeli' => 'required',
-            'nama_produk' => 'required',
+        $validated = $request->validate([
+            'nama_pembeli' => 'required|string',
+            'nama_produk' => 'required|string',
             'jumlah' => 'required|integer',
-            'total_harga' => 'required|integer',
+            'total_harga' => 'required|numeric',
         ]);
 
         Transaksi::create($request->all());
