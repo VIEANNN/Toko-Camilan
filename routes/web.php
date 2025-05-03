@@ -48,7 +48,17 @@ Route::middleware('auth')->group(function () {
         ]);
         Route::resource('inventori', InventoriController::class)->names('inventori');
         Route::resource('warehouse', WarehouseController::class)->names('warehouse');
-        Route::resource('pelanggan', PelangganController::class)->names('pelanggan');
+        Route::resource('pelanggan', PelangganController::class)->names([
+            'index' => 'pelanggan.index',
+            'create' => 'pelanggan.create',
+            'store' => 'pelanggan.store',
+            'edit' => 'pelanggan.edit',
+            'update' => 'pelanggan.update',
+            'destroy' => 'pelanggan.destroy',
+    
+
+        ]);
+        
         Route::resource('marketing', MarketingController::class)->names('marketing');
         Route::resource('kurir', KurirController::class)->names('kurir');
         Route::resource('jasa', JasaController::class)->names('jasa');
@@ -65,8 +75,9 @@ Route::middleware('auth')->group(function () {
     // ========================= //
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::get('/statistik', [StatistikController::class, 'index'])->name('statistik.index');
 });
 
-Route::get('/statistik', [StatistikController::class, 'index'])->name('statistik.index');
+Route::delete('setup/pelanggan/{pelanggan}', [PelangganController::class, 'destroy'])->name('setup.pelanggan.destroy');
 
 require __DIR__.'/auth.php';

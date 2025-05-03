@@ -3,63 +3,60 @@
 namespace App\Http\Controllers\Setup;
 
 use App\Http\Controllers\Controller;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $warehouses = Warehouse::all();
+        return view('setup.warehouse.index', compact('warehouses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('setup.warehouse.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'lokasi' => 'required|string|max:255',
+            'kapasitas' => 'required|integer',
+        ]);
+
+        Warehouse::create($validated);
+
+        return redirect()->route('setup.warehouse.index')->with('success', 'Warehouse berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        $warehouse = Warehouse::findOrFail($id);
+        return view('setup.warehouse.edit', compact('warehouse'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'lokasi' => 'required|string|max:255',
+            'kapasitas' => 'required|integer',
+        ]);
+
+        $warehouse = Warehouse::findOrFail($id);
+        $warehouse->update($validated);
+
+        return redirect()->route('setup.warehouse.index')->with('success', 'Warehouse berhasil diperbarui.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
+        $warehouse = Warehouse::findOrFail($id);
+        $warehouse->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('setup.warehouse.index')->with('success', 'Warehouse berhasil dihapus.');
     }
 }

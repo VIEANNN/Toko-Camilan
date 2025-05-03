@@ -1,0 +1,27 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container mx-auto bg-gray-800 text-white p-6 rounded-lg">
+        <h1 class="text-2xl font-bold mb-4">Tambah Warehouse</h1>
+
+        <form action="{{ route('setup.warehouse.store') }}" method="POST">
+            @csrf
+            <div class="mb-4">
+                <label for="nama" class="block text-sm font-semibold">Nama</label>
+                <input type="text" id="nama" name="nama" class="w-full px-4 py-2 border rounded bg-white text-gray-800" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="lokasi" class="block text-sm font-semibold">Lokasi</label>
+                <input type="text" id="lokasi" name="lokasi" class="w-full px-4 py-2 border rounded bg-white text-gray-800" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="kapasitas" class="block text-sm font-semibold">Kapasitas</label>
+                <input type="number" id="kapasitas" name="kapasitas" class="w-full px-4 py-2 border rounded bg-white text-gray-800" required>
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded">Simpan</button>
+        </form>
+    </div>
+@endsection

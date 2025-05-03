@@ -49,5 +49,14 @@
             @yield('content')
         </div>
     </div>
+
+            <!-- Main Content -->
+        <div class="flex-1 p-6">
+            @yield('content')
+        </div>
+    </div>
+
+    <!-- Scripts dari halaman -->
+    @yield('scripts')
 </body>
 </html>
